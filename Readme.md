@@ -38,11 +38,16 @@ kubectl apply -f .\hello.pod.yaml
 
 ## generate pod file
 ```bash
-kubectl run node-pod --image=panupongdeve/node-pod:multi-stages-v2 --env="HOST=0.0.0.0" --port=5000 --dry-run=client -o yaml > manifests/node-pod.yml
+kubectl run node-pod --image=panupongdeve/node-pod:multi-stages-v2 --env="HOST=0.0.0.0" --port=5000 --dry-run=client -o yaml -l app=node-pod > manifests/node-pod.yml
 ```
 
 
 ### Forwarding Port
 ```bash
 kubectl port-forward --address 0.0.0.0 pods/node-pod 5000:5000
+```
+
+### Generate Deployment
+```bash
+kubectl create deploy nginx --image nginx -o yaml --dry-run=client > .\manifests\nginx.yml
 ```
