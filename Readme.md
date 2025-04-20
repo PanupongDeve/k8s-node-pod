@@ -51,3 +51,8 @@ kubectl port-forward --address 0.0.0.0 pods/node-pod 5000:5000
 ```bash
 kubectl create deploy nginx --image nginx -o yaml --dry-run=client > .\manifests\nginx.yml
 ```
+
+### Nginx ingress
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.12.1/deploy/static/provider/baremetal/deploy.yaml
+```
